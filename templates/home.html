@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col mb-3">
+{% for phone in phones %}
+<div class="card mb-3" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ phone.brand }}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">{{ phone.model }}</h6>
+      <p class="card-text">Info: {{ phone.info }}</p>
+      <p class="card-text">Ram: {{ phone.ram }}</p>
+      <p class="card-text">Price: {{ phone.price }} $</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">&lt;&lt;</a>
+    {% endif %}
+    page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">&gt;&gt;</a>
+    {% endif %}
+</div>
+
+
+{% endblock %}
